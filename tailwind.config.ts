@@ -18,6 +18,9 @@ const config: Config = {
       },
     },
     extend: {
+      screens: {
+        xs: "480px",
+      },
       fontFamily: {
         serif: ["Palatino", "Georgia", "serif"],
       },

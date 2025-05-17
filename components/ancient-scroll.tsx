@@ -25,13 +25,10 @@ import {
   BookOpen,
   Lightbulb,
   HelpCircle,
-  CheckCircle2,
 } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Progress } from "@/components/ui/progress"
 import { Input } from "@/components/ui/input"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface LoreEntry {
   id: string
@@ -590,29 +587,29 @@ And so begins our tale...`
     switch (quality) {
       case "legendary":
         return (
-          <div className="flex items-center gap-1 bg-amber-500/20 text-amber-500 px-2 py-0.5 rounded-full text-xs">
-            <Sparkles className="h-3 w-3" />
+          <div className="flex items-center gap-1 bg-amber-500/20 text-amber-500 px-1 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs">
+            <Sparkles className="h-2 w-2 sm:h-3 sm:w-3" />
             <span>Legendary</span>
           </div>
         )
       case "rare":
         return (
-          <div className="flex items-center gap-1 bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full text-xs">
-            <Award className="h-3 w-3" />
+          <div className="flex items-center gap-1 bg-purple-500/20 text-purple-400 px-1 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs">
+            <Award className="h-2 w-2 sm:h-3 sm:w-3" />
             <span>Rare</span>
           </div>
         )
       case "common":
         return (
-          <div className="flex items-center gap-1 bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full text-xs">
-            <BookOpen className="h-3 w-3" />
+          <div className="flex items-center gap-1 bg-blue-500/20 text-blue-400 px-1 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs">
+            <BookOpen className="h-2 w-2 sm:h-3 sm:w-3" />
             <span>Common</span>
           </div>
         )
       default:
         return (
-          <div className="flex items-center gap-1 bg-gray-500/20 text-gray-400 px-2 py-0.5 rounded-full text-xs">
-            <MessageSquare className="h-3 w-3" />
+          <div className="flex items-center gap-1 bg-gray-500/20 text-gray-400 px-1 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs">
+            <MessageSquare className="h-2 w-2 sm:h-3 sm:w-3" />
             <span>Unverified</span>
           </div>
         )
@@ -625,15 +622,15 @@ And so begins our tale...`
 
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-amber-900/30 backdrop-blur-md bg-black/80 shadow-md">
-        <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+        <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
           <div className="flex items-center">
-            <div className="w-10 h-10 relative mr-3 overflow-hidden rounded-full bg-gradient-to-r from-amber-500 to-yellow-600 p-[2px]">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 relative mr-2 sm:mr-3 overflow-hidden rounded-full bg-gradient-to-r from-amber-500 to-yellow-600 p-[2px]">
               <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                <Scroll className="h-5 w-5 text-amber-400" />
+                <Scroll className="h-4 w-4 sm:h-5 sm:w-5 text-amber-400" />
               </div>
             </div>
             <div>
-              <h1 className="text-xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500">
+              <h1 className="text-lg sm:text-xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500">
                 {tokenName}
               </h1>
               <p className="text-xs text-amber-400/80 font-mono">
@@ -642,10 +639,11 @@ And so begins our tale...`
             </div>
           </div>
 
-          <div className="flex items-center gap-4 mt-2 sm:mt-0">
-            <div className="flex items-center gap-2 bg-amber-900/20 px-3 py-1 rounded-full text-xs text-amber-300">
+          <div className="flex items-center gap-2 sm:gap-4 mt-2 sm:mt-0">
+            <div className="flex items-center gap-1 bg-amber-900/20 px-2 py-1 rounded-full text-xs text-amber-300">
               <Users className="h-3 w-3" />
-              <span>{onlineUsers} scribes online</span>
+              <span className="hidden xs:inline">{onlineUsers} scribes</span>
+              <span className="xs:hidden">{onlineUsers}</span>
             </div>
             <div className="hidden md:flex items-center gap-2 bg-amber-900/20 px-3 py-1 rounded-full text-xs text-amber-300">
               <Award className="h-3 w-3" />
@@ -655,24 +653,25 @@ And so begins our tale...`
               variant="ghost"
               size="sm"
               onClick={() => setShowQuestDialog(true)}
-              className="text-amber-300 hover:text-amber-200 hover:bg-amber-900/20"
+              className="text-amber-300 hover:text-amber-200 hover:bg-amber-900/20 h-8 w-8 sm:h-9 sm:w-auto p-0 sm:p-2"
             >
-              Quests
+              <span className="hidden sm:inline">Quests</span>
+              <Award className="h-4 w-4 sm:hidden" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowHelpDialog(true)}
-              className="text-amber-300 hover:text-amber-200 hover:bg-amber-900/20"
+              className="text-amber-300 hover:text-amber-200 hover:bg-amber-900/20 h-8 w-8 sm:h-9 p-0 sm:p-2"
             >
               <HelpCircle className="h-4 w-4" />
             </Button>
-            <WalletMultiButton className="!bg-amber-800 hover:!bg-amber-700 !rounded-md !h-9 !py-0 !px-4 !text-amber-100" />
+            <WalletMultiButton className="!bg-amber-800 hover:!bg-amber-700 !rounded-md !h-8 sm:!h-9 !py-0 !px-2 sm:!px-4 !text-amber-100 !text-xs sm:!text-sm" />
             <Button
               variant="outline"
               size="sm"
               onClick={disconnectWallet}
-              className="border-red-500/50 text-red-400 hover:bg-red-900/20 h-9"
+              className="border-red-500/50 text-red-400 hover:bg-red-900/20 h-8 w-8 sm:h-9 sm:w-auto p-0 sm:p-2"
             >
               <LogOut className="h-4 w-4" />
             </Button>
@@ -681,18 +680,18 @@ And so begins our tale...`
       </header>
 
       {/* Main Content */}
-      <main className="relative z-20 container mx-auto px-4 py-8 mt-2">
+      <main className="relative z-20 container mx-auto px-2 sm:px-4 py-4 sm:py-8 mt-2">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8 text-center"
+            className="mb-4 sm:mb-8 text-center"
           >
-            <h2 className="text-4xl font-serif font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-500 to-amber-300">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-500 to-amber-300">
               The Ancient Cryptic Scroll
             </h2>
-            <p className="text-amber-200 max-w-2xl mx-auto font-serif">
+            <p className="text-sm sm:text-base text-amber-200 max-w-2xl mx-auto font-serif">
               Add your wisdom to the sacred text. Each prophecy strengthens the scroll's power.
             </p>
           </motion.div>
@@ -712,15 +711,15 @@ And so begins our tale...`
           </div>
 
           {/* Tabs for different sections */}
-          <Tabs defaultValue="scroll" value={activeTab} onValueChange={setActiveTab} className="mb-8">
-            <TabsList className="grid grid-cols-3 mb-6">
-              <TabsTrigger value="scroll" className="font-serif">
+          <Tabs defaultValue="scroll" value={activeTab} onValueChange={setActiveTab} className="mb-4 sm:mb-8">
+            <TabsList className="grid grid-cols-3 mb-4 sm:mb-6">
+              <TabsTrigger value="scroll" className="font-serif text-sm sm:text-base">
                 The Scroll
               </TabsTrigger>
-              <TabsTrigger value="riddles" className="font-serif">
-                Ancient Riddles
+              <TabsTrigger value="riddles" className="font-serif text-sm sm:text-base">
+                Riddles
               </TabsTrigger>
-              <TabsTrigger value="prophecy" className="font-serif">
+              <TabsTrigger value="prophecy" className="font-serif text-sm sm:text-base">
                 Prophecy
               </TabsTrigger>
             </TabsList>
@@ -734,21 +733,21 @@ And so begins our tale...`
                 className="mb-10"
               >
                 <div className="relative">
-                  <div className="absolute -left-6 -top-6 w-12 h-12 z-20">
-                    <div className="w-12 h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
-                      <Sparkles className="h-6 w-6" />
+                  <div className="absolute -left-2 sm:-left-6 -top-2 sm:-top-6 w-8 h-8 sm:w-12 sm:h-12 z-20">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
+                      <Sparkles className="h-4 w-4 sm:h-6 sm:w-6" />
                     </div>
                   </div>
-                  <div className="absolute -right-6 -top-6 w-12 h-12 z-20">
-                    <div className="w-12 h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
-                      <Sparkles className="h-6 w-6" />
+                  <div className="absolute -right-2 sm:-right-6 -top-2 sm:-top-6 w-8 h-8 sm:w-12 sm:h-12 z-20">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
+                      <Sparkles className="h-4 w-4 sm:h-6 sm:w-6" />
                     </div>
                   </div>
 
                   <div className="relative">
                     <div
                       ref={scrollRef}
-                      className="bg-gradient-to-b from-amber-50 to-amber-100 border-4 border-amber-900/70 rounded-lg p-8 shadow-[0_0_25px_rgba(245,158,11,0.3)] max-h-[400px] overflow-y-auto scroll-smooth"
+                      className="bg-gradient-to-b from-amber-50 to-amber-100 border-4 border-amber-900/70 rounded-lg p-4 sm:p-8 shadow-[0_0_25px_rgba(245,158,11,0.3)] max-h-[350px] sm:max-h-[400px] overflow-y-auto scroll-smooth"
                     >
                       <div className="relative z-10">
                         <h3 className="text-2xl font-serif font-bold mb-6 text-amber-900 text-center">
@@ -785,25 +784,25 @@ And so begins our tale...`
                                         <div className="relative z-10">
                                           <div className="flex justify-between items-start mb-2">
                                             <div className="flex items-center">
-                                              <Avatar className="h-8 w-8 mr-2 border border-amber-700">
-                                                <AvatarFallback className="bg-amber-800 text-amber-100">
+                                              <Avatar className="h-6 w-6 sm:h-8 sm:w-8 mr-2 border border-amber-700">
+                                                <AvatarFallback className="bg-amber-800 text-amber-100 text-xs sm:text-sm">
                                                   {entry.author.slice(0, 2).toUpperCase()}
                                                 </AvatarFallback>
                                               </Avatar>
                                               <div>
-                                                <div className="flex items-center gap-2">
-                                                  <p className="text-sm font-medium text-amber-900 font-serif">
+                                                <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                                                  <p className="text-xs sm:text-sm font-medium text-amber-900 font-serif">
                                                     {entry.author}
                                                   </p>
                                                   {entry.isCanonical && (
-                                                    <div className="bg-amber-600/20 text-amber-800 px-2 py-0.5 rounded-full text-xs">
+                                                    <div className="bg-amber-600/20 text-amber-800 px-1 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs">
                                                       Canon
                                                     </div>
                                                   )}
                                                   {getQualityBadge(entry.quality)}
                                                 </div>
-                                                <div className="flex items-center text-xs text-amber-800">
-                                                  <span className="text-xs">{formatTimestamp(entry.timestamp)}</span>
+                                                <div className="flex items-center text-[10px] sm:text-xs text-amber-800">
+                                                  <span>{formatTimestamp(entry.timestamp)}</span>
                                                 </div>
                                               </div>
                                             </div>
@@ -812,26 +811,28 @@ And so begins our tale...`
                                                 variant="ghost"
                                                 size="sm"
                                                 onClick={() => voteOnEntry(entry.id, 1)}
-                                                className="h-7 w-7 p-0 text-amber-800 hover:text-amber-600 hover:bg-amber-200/50"
+                                                className="h-6 w-6 sm:h-7 sm:w-7 p-0 text-amber-800 hover:text-amber-600 hover:bg-amber-200/50"
                                               >
-                                                <ThumbsUp className="h-4 w-4" />
+                                                <ThumbsUp className="h-3 w-3 sm:h-4 sm:w-4" />
                                               </Button>
-                                              <span className="text-sm font-medium text-amber-900">{entry.votes}</span>
+                                              <span className="text-xs sm:text-sm font-medium text-amber-900">
+                                                {entry.votes}
+                                              </span>
                                               <Button
                                                 variant="ghost"
                                                 size="sm"
                                                 onClick={() => voteOnEntry(entry.id, -1)}
-                                                className="h-7 w-7 p-0 text-amber-800 hover:text-amber-600 hover:bg-amber-200/50"
+                                                className="h-6 w-6 sm:h-7 sm:w-7 p-0 text-amber-800 hover:text-amber-600 hover:bg-amber-200/50"
                                               >
-                                                <ThumbsDown className="h-4 w-4" />
+                                                <ThumbsDown className="h-3 w-3 sm:h-4 sm:w-4" />
                                               </Button>
                                               <Button
                                                 variant="ghost"
                                                 size="sm"
                                                 onClick={() => reportEntry(entry.id)}
-                                                className="h-7 w-7 p-0 text-amber-800 hover:text-red-600 hover:bg-amber-200/50"
+                                                className="h-6 w-6 sm:h-7 sm:w-7 p-0 text-amber-800 hover:text-red-600 hover:bg-amber-200/50"
                                               >
-                                                <AlertTriangle className="h-4 w-4" />
+                                                <AlertTriangle className="h-3 w-3 sm:h-4 sm:w-4" />
                                               </Button>
                                             </div>
                                           </div>
@@ -860,14 +861,14 @@ And so begins our tale...`
                     </div>
                   </div>
 
-                  <div className="absolute -left-6 -bottom-6 w-12 h-12">
-                    <div className="w-12 h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
-                      <Feather className="h-6 w-6" />
+                  <div className="absolute -left-2 sm:-left-6 -bottom-2 sm:-bottom-6 w-8 h-8 sm:w-12 sm:h-12">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
+                      <Feather className="h-4 w-4 sm:h-6 sm:w-6" />
                     </div>
                   </div>
-                  <div className="absolute -right-6 -bottom-6 w-12 h-12">
-                    <div className="w-12 h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
-                      <Feather className="h-6 w-6" />
+                  <div className="absolute -right-2 sm:-right-6 -bottom-2 sm:-bottom-6 w-8 h-8 sm:w-12 sm:h-12">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 bg-amber-800 rounded-full flex items-center justify-center text-amber-100">
+                      <Feather className="h-4 w-4 sm:h-6 sm:w-6" />
                     </div>
                   </div>
                 </div>
@@ -879,28 +880,30 @@ And so begins our tale...`
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
               >
-                <div className="bg-gradient-to-b from-amber-100 to-amber-200 border-4 border-amber-900/70 rounded-lg p-6 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
-                  <h3 className="text-xl font-serif font-bold mb-4 text-amber-900 text-center">Add Your Prophecy</h3>
+                <div className="bg-gradient-to-b from-amber-100 to-amber-200 border-4 border-amber-900/70 rounded-lg p-4 sm:p-6 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold mb-3 sm:mb-4 text-amber-900 text-center">
+                    Add Your Prophecy
+                  </h3>
 
-                  <div className="mb-4 bg-amber-800/20 border border-amber-800/30 rounded-lg p-3">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Lightbulb className="h-4 w-4 text-amber-800" />
-                      <h4 className="text-sm font-serif font-semibold text-amber-800">Writing Prompt</h4>
+                  <div className="mb-3 sm:mb-4 bg-amber-800/20 border border-amber-800/30 rounded-lg p-2 sm:p-3">
+                    <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                      <Lightbulb className="h-3 w-3 sm:h-4 sm:w-4 text-amber-800" />
+                      <h4 className="text-xs sm:text-sm font-serif font-semibold text-amber-800">Writing Prompt</h4>
                     </div>
-                    <p className="text-sm italic text-amber-900">{currentPrompt}</p>
+                    <p className="text-xs sm:text-sm italic text-amber-900">{currentPrompt}</p>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <Textarea
                       value={newEntry}
                       onChange={(e) => setNewEntry(e.target.value)}
                       placeholder="Continue the ancient tale with your own chapter..."
-                      className="bg-amber-100/90 border-amber-900/50 text-amber-900 min-h-[120px] font-serif placeholder:text-amber-800/50"
+                      className="bg-amber-100/90 border-amber-900/50 text-amber-900 min-h-[100px] sm:min-h-[120px] font-serif placeholder:text-amber-800/50 text-sm sm:text-base"
                     />
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0">
                       <div className="flex items-center text-amber-800">
-                        <Feather className="h-4 w-4 mr-2" />
-                        <p className="text-sm">
+                        <Feather className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                        <p className="text-xs sm:text-sm">
                           Writing as{" "}
                           {wallet.publicKey ? `Scribe_${wallet.publicKey.toBase58().slice(0, 4)}` : "Anonymous Scribe"}
                         </p>
@@ -908,16 +911,16 @@ And so begins our tale...`
                       <Button
                         onClick={submitLoreEntry}
                         disabled={!newEntry.trim() || isSubmitting || !isConnected}
-                        className="bg-gradient-to-r from-amber-900 to-yellow-800 hover:from-amber-800 hover:to-yellow-700 text-amber-100 font-serif"
+                        className="bg-gradient-to-r from-amber-900 to-yellow-800 hover:from-amber-800 hover:to-yellow-700 text-amber-100 font-serif text-sm sm:text-base"
                       >
                         {isSubmitting ? (
                           <>
-                            <div className="h-4 w-4 border-2 border-amber-100 border-t-transparent rounded-full animate-spin mr-2"></div>
+                            <div className="h-3 w-3 sm:h-4 sm:w-4 border-2 border-amber-100 border-t-transparent rounded-full animate-spin mr-1 sm:mr-2"></div>
                             Inscribing...
                           </>
                         ) : (
                           <>
-                            <Sparkles className="h-4 w-4 mr-2" />
+                            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                             Continue the Tale
                           </>
                         )}
@@ -929,25 +932,27 @@ And so begins our tale...`
             </TabsContent>
 
             <TabsContent value="riddles">
-              <div className="bg-gradient-to-b from-amber-50 to-amber-100 border-4 border-amber-900/70 rounded-lg p-8 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
-                <h3 className="text-2xl font-serif font-bold mb-6 text-amber-900 text-center">Ancient Riddles</h3>
-                <p className="text-amber-900 mb-6 font-serif">
+              <div className="bg-gradient-to-b from-amber-50 to-amber-100 border-4 border-amber-900/70 rounded-lg p-4 sm:p-8 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold mb-3 sm:mb-6 text-amber-900 text-center">
+                  Ancient Riddles
+                </h3>
+                <p className="text-sm sm:text-base text-amber-900 mb-4 sm:mb-6 font-serif">
                   Solve these ancient riddles to unlock hidden knowledge and increase your standing among the scroll
                   keepers.
                 </p>
 
-                <div className="space-y-8">
+                <div className="space-y-4 sm:space-y-8">
                   {riddles.map((riddle) => (
                     <div
                       key={riddle.id}
-                      className={`border ${riddle.solved ? "border-green-600 bg-green-50/50" : "border-amber-900/30 bg-amber-50/50"} rounded-lg p-4`}
+                      className={`border ${riddle.solved ? "border-green-600 bg-green-50/50" : "border-amber-900/30 bg-amber-50/50"} rounded-lg p-3 sm:p-4`}
                     >
-                      <div className="flex justify-between items-start mb-4">
-                        <h4 className="text-lg font-serif font-semibold text-amber-900">
+                      <div className="flex justify-between items-start mb-2 sm:mb-4">
+                        <h4 className="text-base sm:text-lg font-serif font-semibold text-amber-900">
                           {riddle.solved ? (
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1 sm:gap-2">
                               <span>Solved</span>
-                              <Shield className="h-4 w-4 text-green-600" />
+                              <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
                             </div>
                           ) : (
                             "Unsolved Riddle"
@@ -963,26 +968,26 @@ And so begins our tale...`
                                 description: riddle.hint,
                               })
                             }
-                            className="text-amber-800 hover:bg-amber-200/50"
+                            className="text-xs sm:text-sm text-amber-800 hover:bg-amber-200/50 h-7 px-2"
                           >
                             Get Hint
                           </Button>
                         )}
                       </div>
 
-                      <p className="text-amber-900 font-serif mb-4">{riddle.question}</p>
+                      <p className="text-sm sm:text-base text-amber-900 font-serif mb-3 sm:mb-4">{riddle.question}</p>
 
                       {riddle.solved ? (
-                        <div className="bg-green-100 border border-green-300 rounded-lg p-3 text-green-800">
-                          <p className="font-serif">
+                        <div className="bg-green-100 border border-green-300 rounded-lg p-2 sm:p-3 text-green-800">
+                          <p className="font-serif text-xs sm:text-sm">
                             You solved this riddle and unlocked: <span className="font-semibold">{riddle.reward}</span>
                           </p>
                         </div>
                       ) : (
-                        <div className="flex gap-2">
+                        <div className="flex flex-col sm:flex-row gap-2">
                           <Input
                             placeholder="Your answer..."
-                            className="bg-amber-100/90 border-amber-900/50 text-amber-900 font-serif"
+                            className="bg-amber-100/90 border-amber-900/50 text-amber-900 font-serif text-sm sm:text-base"
                             value={riddleId === riddle.id ? riddleAnswer : ""}
                             onChange={(e) => {
                               setRiddleAnswer(e.target.value)
@@ -991,7 +996,7 @@ And so begins our tale...`
                           />
                           <Button
                             onClick={() => checkRiddleAnswer(riddle.id)}
-                            className="bg-amber-900 hover:bg-amber-800 text-amber-100"
+                            className="bg-amber-900 hover:bg-amber-800 text-amber-100 text-sm"
                           >
                             Submit
                           </Button>
@@ -1004,33 +1009,37 @@ And so begins our tale...`
             </TabsContent>
 
             <TabsContent value="prophecy">
-              <div className="bg-gradient-to-b from-amber-50 to-amber-100 border-4 border-amber-900/70 rounded-lg p-8 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
-                <h3 className="text-2xl font-serif font-bold mb-6 text-amber-900 text-center">The Great Prophecy</h3>
+              <div className="bg-gradient-to-b from-amber-50 to-amber-100 border-4 border-amber-900/70 rounded-lg p-4 sm:p-8 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold mb-3 sm:mb-6 text-amber-900 text-center">
+                  The Great Prophecy
+                </h3>
 
-                <div className="relative mb-8">
+                <div className="relative mb-4 sm:mb-8">
                   <div className="absolute inset-0 bg-amber-900/5 rounded-lg"></div>
-                  <div className="relative p-6 font-serif text-amber-900">
-                    <p className="text-center italic mb-4">
+                  <div className="relative p-3 sm:p-6 font-serif text-amber-900">
+                    <p className="text-center italic mb-3 sm:mb-4 text-sm sm:text-base">
                       The complete prophecy is hidden within the scroll. Unlock fragments by solving riddles and gaining
                       levels.
                     </p>
 
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       {decodedFragments.length > 0 ? (
                         decodedFragments.map((fragment, index) => (
-                          <div key={index} className="bg-amber-100 border border-amber-300 rounded-lg p-3">
-                            <p className="font-serif text-amber-900">{fragment}</p>
+                          <div key={index} className="bg-amber-100 border border-amber-300 rounded-lg p-2 sm:p-3">
+                            <p className="font-serif text-sm sm:text-base text-amber-900">{fragment}</p>
                           </div>
                         ))
                       ) : (
-                        <div className="bg-amber-100 border border-amber-300 rounded-lg p-6 text-center">
-                          <Lock className="h-8 w-8 mx-auto mb-2 text-amber-800" />
-                          <p className="font-serif text-amber-900">No prophecy fragments unlocked yet</p>
+                        <div className="bg-amber-100 border border-amber-300 rounded-lg p-4 sm:p-6 text-center">
+                          <Lock className="h-6 w-6 sm:h-8 sm:w-8 mx-auto mb-2 text-amber-800" />
+                          <p className="font-serif text-sm sm:text-base text-amber-900">
+                            No prophecy fragments unlocked yet
+                          </p>
                         </div>
                       )}
 
                       {decodedFragments.length < prophecyFragments.length && (
-                        <div className="flex items-center justify-center gap-2 mt-4">
+                        <div className="flex items-center justify-center gap-2 mt-3 sm:mt-4">
                           <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
                           <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
                           <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
@@ -1040,9 +1049,11 @@ And so begins our tale...`
                   </div>
                 </div>
 
-                <div className="bg-amber-900/10 rounded-lg p-4">
-                  <h4 className="text-lg font-serif font-semibold text-amber-900 mb-2">How to Unlock the Prophecy</h4>
-                  <ul className="list-disc list-inside space-y-2 text-amber-900 font-serif">
+                <div className="bg-amber-900/10 rounded-lg p-3 sm:p-4">
+                  <h4 className="text-base sm:text-lg font-serif font-semibold text-amber-900 mb-2">
+                    How to Unlock the Prophecy
+                  </h4>
+                  <ul className="list-disc list-inside space-y-1 sm:space-y-2 text-sm sm:text-base text-amber-900 font-serif">
                     <li>Solve the ancient riddles to reveal fragments</li>
                     <li>Gain levels by contributing quality entries to the scroll</li>
                     <li>Vote on other scribes' entries to earn reputation</li>
@@ -1063,191 +1074,6 @@ And so begins our tale...`
           </p>
         </div>
       </footer>
-
-      {/* Report Dialog */}
-      <Dialog open={showReportDialog} onOpenChange={setShowReportDialog}>
-        <DialogContent className="bg-amber-100 border-2 border-amber-900">
-          <DialogHeader>
-            <DialogTitle className="text-amber-900 font-serif">Report Entry</DialogTitle>
-            <DialogDescription className="text-amber-800 font-serif">
-              Explain why this entry violates the sacred scroll's guidelines
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4">
-            <Textarea
-              value={reportReason}
-              onChange={(e) => setReportReason(e.target.value)}
-              placeholder="Provide details about why this entry should be removed..."
-              className="bg-amber-50 border-amber-900/50 text-amber-900 font-serif"
-            />
-
-            <div className="flex justify-end gap-2">
-              <Button
-                variant="outline"
-                onClick={() => setShowReportDialog(false)}
-                className="border-amber-900 text-amber-900"
-              >
-                Cancel
-              </Button>
-              <Button onClick={submitReport} className="bg-amber-900 text-amber-100">
-                Submit Report
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Help Dialog */}
-      <Dialog open={showHelpDialog} onOpenChange={setShowHelpDialog}>
-        <DialogContent className="bg-amber-100 border-2 border-amber-900 max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="text-amber-900 font-serif text-xl">Welcome to the Ancient Scroll</DialogTitle>
-            <DialogDescription className="text-amber-800 font-serif">
-              Your guide to interacting with the sacred text
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4 text-amber-900 font-serif">
-            <h4 className="font-bold">How to Participate:</h4>
-
-            <div className="space-y-2">
-              <div className="flex items-start gap-2">
-                <div className="bg-amber-800 rounded-full p-1 text-amber-100 mt-0.5">
-                  <span className="text-xs">1</span>
-                </div>
-                <p>
-                  <strong>Add to the Scroll</strong> - Contribute your wisdom to the ancient text by writing entries in
-                  the scroll tab.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <div className="bg-amber-800 rounded-full p-1 text-amber-100 mt-0.5">
-                  <span className="text-xs">2</span>
-                </div>
-                <p>
-                  <strong>Solve Riddles</strong> - Visit the Ancient Riddles tab to solve puzzles and unlock prophecy
-                  fragments.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <div className="bg-amber-800 rounded-full p-1 text-amber-100 mt-0.5">
-                  <span className="text-xs">3</span>
-                </div>
-                <p>
-                  <strong>Track Prophecies</strong> - View your unlocked prophecy fragments in the Prophecy tab.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <div className="bg-amber-800 rounded-full p-1 text-amber-100 mt-0.5">
-                  <span className="text-xs">4</span>
-                </div>
-                <p>
-                  <strong>Complete Quests</strong> - Check your available quests to earn XP and level up.
-                </p>
-              </div>
-            </div>
-
-            <h4 className="font-bold mt-4">Rewards:</h4>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Gain XP and level up by participating</li>
-              <li>Earn reputation by contributing quality entries</li>
-              <li>Unlock hidden prophecy fragments</li>
-              <li>Achieve legendary status among the scroll keepers</li>
-            </ul>
-
-            <div className="bg-amber-200/50 p-3 rounded-md mt-4">
-              <p className="text-sm italic">
-                "The scroll rewards those who contribute with wisdom and respect. May your journey through the ancient
-                text be enlightening."
-              </p>
-            </div>
-          </div>
-
-          <div className="flex justify-end">
-            <Button onClick={() => setShowHelpDialog(false)} className="bg-amber-900 text-amber-100">
-              Begin My Journey
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Quests Dialog */}
-      <Dialog open={showQuestDialog} onOpenChange={setShowQuestDialog}>
-        <DialogContent className="bg-amber-100 border-2 border-amber-900 max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="text-amber-900 font-serif text-xl">Sacred Quests</DialogTitle>
-            <DialogDescription className="text-amber-800 font-serif">
-              Complete these tasks to earn rewards and advance your journey
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4">
-            {availableQuests.map((quest) => (
-              <Card
-                key={quest.id}
-                className={`bg-amber-50 border ${quest.completed ? "border-green-600" : "border-amber-900/50"}`}
-              >
-                <CardHeader className="pb-2">
-                  <div className="flex justify-between items-center">
-                    <CardTitle className="text-amber-900 font-serif text-lg">{quest.title}</CardTitle>
-                    {quest.completed ? (
-                      <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    ) : (
-                      <div className="bg-amber-900/20 text-amber-800 px-2 py-0.5 rounded-full text-xs">
-                        +{quest.xp} XP
-                      </div>
-                    )}
-                  </div>
-                  <CardDescription className="text-amber-800 font-serif">{quest.description}</CardDescription>
-                </CardHeader>
-                <CardFooter className="pt-2">
-                  {quest.completed ? (
-                    <p className="text-green-700 text-sm font-serif">Completed</p>
-                  ) : (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-amber-900 border-amber-900/50 hover:bg-amber-900/10 bg-amber-100"
-                      onClick={() => {
-                        switch (quest.id) {
-                          case 1:
-                            setActiveTab("scroll")
-                            break
-                          case 2:
-                            setActiveTab("riddles")
-                            break
-                          case 3:
-                            setActiveTab("scroll")
-                            break
-                          case 4:
-                            setActiveTab("prophecy")
-                            break
-                        }
-                        setShowQuestDialog(false)
-                      }}
-                    >
-                      Start Quest
-                    </Button>
-                  )}
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-
-          <div className="flex justify-end">
-            <Button
-              onClick={() => setShowQuestDialog(false)}
-              className="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-amber-950"
-            >
-              Close
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }
